@@ -1,5 +1,3 @@
-package leetcode;
-
 /**
  * 标签：字符串匹配
  */
