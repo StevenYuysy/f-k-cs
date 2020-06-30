@@ -1,20 +1,14 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class MaxSubArray {
   public int maxSubArray(int[] nums) {
-    List<Integer> result = new ArrayList<Integer>();
-    for (int i = 0; i < nums.length; i++) {
-      List<Integer> cResult = new ArrayList<>(result);
-      result.add(nums[i]);
-      for (int j = 1; j <= i; j++) {
-        int index = cResult.size() - j;
-        int num = cResult.get(index);
-        result.add(num + nums[i]);
+    int currentSum = nums[0];
+    int lastSum = nums[0];
+    for (int i = 1; i < nums.length; i++) {
+      lastSum = Math.max(lastSum, 0) + nums[i];
+      if (lastSum > currentSum) {
+        currentSum = lastSum;
       }
     }
-    return Collections.max(result);
+    return currentSum;
   }
 
   public static void main(String[] args) {
